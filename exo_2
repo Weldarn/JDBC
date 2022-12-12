@@ -1,0 +1,38 @@
+package entreprise;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+    	
+    	try
+        {
+            Class.forName("org.postgresql.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/entreprise", "postgres", "SoulCrip03!");
+
+            Statement stmt = connection.createStatement();
+
+            ResultSet res = stmt.executeQuery("SELECT * FROM emp WHERE noserv = 5");
+            
+
+            	while(res.next()) {
+            		
+            		System.out.println(res.getInt(1)+ " " + res.getString(2) + " " + res.getString(3) +" " + res.getString(4) + " " + res.getInt(5) + " " + res.getDate(6) + " " + res.getInt(7)+ " " + res.getFloat(8) + " " + res.getInt(9));
+            	}
+   
+                
+                
+
+            	connection.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            System.out.println("Sa marche pas");
+        }
+    }
+
+}
