@@ -1,0 +1,40 @@
+package entreprise;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+    	
+    	try
+        {
+            Class.forName("org.postgresql.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/entreprise", "postgres", "SoulCrip03!");
+
+            Statement stmt = connection.createStatement();
+
+            ResultSet res = stmt.executeQuery("select * from emp INNER JOIN serv ON emp.noserv =serv.noserv WHERE service='INFORMATIQUE'");
+
+            	while(res.next()) {
+            		
+            		System.out.println(res.getString("nom"));
+            		System.out.println(res.getString("prenom"));
+            		System.out.println(res.getString("service"));
+            		
+            	}
+   
+                
+                
+
+            	connection.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            System.out.println("Sa marche pas");
+        }
+    }
+
+}
