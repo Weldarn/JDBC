@@ -10,7 +10,7 @@ public class Main {
     	
     	Scanner saisieUtilisateur = new Scanner(System.in);
     	System.out.println("Veuillez saisir un numéro de service :");
-    	String reponse = saisieUtilisateur.nextLine().toUpperCase();
+    	Float reponse = saisieUtilisateur.nextFloat();
     	System.out.println("Veuillez saisir le salaire :");
     	Float reponsesal = saisieUtilisateur.nextFloat();
 
